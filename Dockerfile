@@ -21,21 +21,21 @@ RUN git clone --single-branch --depth=1 https://github.com/riscv-software-src/ri
                                       mkdir build &&\
                                       cd build &&\
                                       ../configure --prefix=$RISCV &&\
-                                      make && make install 
+                                      make -j2 && make install 
 
 RUN git clone --single-branch --depth=1 https://github.com/riscv-collab/riscv-gnu-toolchain &&\
                                       cd riscv-gnu-toolchain &&\
                                       mkdir build &&\
                                       cd build &&\
                                       ../configure --prefix=$RISCV &&\
-                                      make && make install 
+                                      make -j2 && make install 
 
 RUN git clone --single-branch --depth=1 https://github.com/riscv-software-src/riscv-pk &&\
                                       cd riscv-pk &&\
                                       mkdir build &&\
                                       cd build &&\
                                       ../configure --prefix=$RISCV --host=riscv64-unknown-elf &&\
-                                      make && make install 
+                                      make -j2 && make install 
 
 ENV LD_LIBRARY_PATH="$RISCV/lib"
 
