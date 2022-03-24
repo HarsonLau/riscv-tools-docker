@@ -23,7 +23,11 @@ RUN git clone --single-branch --depth=1 https://github.com/riscv-software-src/ri
                                       ../configure --prefix=$RISCV &&\
                                       make -j2 && make install 
 
-RUN git clone --single-branch --depth=1 https://github.com/riscv-collab/riscv-gnu-toolchain &&\
+
+#RUN git clone --single-branch --depth=1 https://github.com/riscv-collab/riscv-gnu-toolchain &&\
+RUN wget https://github.com/riscv-collab/riscv-gnu-toolchain/archive/b9f21e709054d18b101ea464e3b2894d834d023d.zip -o riscv-gnu-toolchain.zip &&\
+            unzip riscv-gnu-toolchain.zip &&\
+            mv riscv-gnu-toolchain-b9f21e709054d18b101ea464e3b2894d834d023d riscv-gnu-toolchain &&\
                                       cd riscv-gnu-toolchain &&\
                                       mkdir build &&\
                                       cd build &&\
