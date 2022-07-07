@@ -24,7 +24,7 @@ RUN git clone --single-branch  https://github.com/riscv-collab/riscv-gnu-toolcha
                                       mkdir build &&\
                                       cd build &&\
                                       ../configure --prefix=$RISCV &&\
-                                      make linux && make linux && make install 
+                                      make && make linux 
 
 #FROM base as mid2
 #COPY --from=mid1 /root/riscv-tools-install/ ./riscv-tools-install/
