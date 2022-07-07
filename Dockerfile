@@ -24,7 +24,7 @@ RUN git clone --single-branch  https://github.com/riscv-collab/riscv-gnu-toolcha
                                       mkdir build &&\
                                       cd build &&\
                                       ../configure --prefix=$RISCV &&\
-                                      make -j2 && make install 
+                                      make linux && make linux && make install 
 
 #FROM base as mid2
 #COPY --from=mid1 /root/riscv-tools-install/ ./riscv-tools-install/
@@ -42,11 +42,6 @@ RUN git clone --single-branch --depth=1 https://github.com/riscv-software-src/ri
                                       ../configure --prefix=$RISCV --host=riscv64-unknown-elf &&\
                                       make -j2 && make install
                                       
-RUN git clone --single-branch --depth=1 https://github.com/lshpku/rv8-riscv-ckpt.git&&\
-                                    cd rv8-riscv-ckpt&&\
-                                    git submodule update --init --recursive&&\
-                                    make -j2 && make install
-
 ENV LD_LIBRARY_PATH="$RISCV/lib:$LD_LIBRARY_PATH"
 
 
@@ -70,5 +65,9 @@ RUN export TZ=Asia/Shanghai && export DEBIAN_FRONTEND=noninteractive && \
                device-tree-compiler\
                build-essential autoconf automake autotools-dev curl python3 libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev
 
+RUN git clone --single-branch --depth=1 https://github.com/lshpku/rv8-riscv-ckpt.git&&\
+                                    cd rv8-riscv-ckpt&&\
+                                    git submodule update --init --recursive&&\
+                                    make -j2 && make install
 
 CMD ["/bin/sh"]
