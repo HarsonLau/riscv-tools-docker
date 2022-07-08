@@ -24,10 +24,10 @@ RUN git clone --single-branch  https://github.com/riscv-collab/riscv-gnu-toolcha
                                       mkdir build &&\
                                       cd build &&\
                                       ../configure --prefix=$RISCV &&\
-                                      make && make linux 
+                                      make linux 
 
 #FROM base as mid2
-#COPY --from=mid1 /root/riscv-tools-install/ ./riscv-tools-install/
+#COPY --from=mid1 /opt/riscv/toolchain /opt/riscv/toolchain
 RUN git clone --single-branch --depth=1 https://github.com/riscv-software-src/riscv-isa-sim&&\
                                       cd riscv-isa-sim &&\
                                       mkdir build &&\
