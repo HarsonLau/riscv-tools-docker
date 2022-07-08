@@ -24,16 +24,5 @@ RUN git clone --single-branch  https://github.com/riscv-collab/riscv-gnu-toolcha
                                       mkdir build &&\
                                       cd build &&\
                                       ../configure --prefix=$RISCV &&\
-                                      make 
-
-FROM base as mid2
-COPY --from=mid1 /opt/riscv/toolchain /opt/riscv/toolchain
-RUN git clone --single-branch  https://github.com/riscv-collab/riscv-gnu-toolchain &&\
-                                      cd riscv-gnu-toolchain &&\
-                                      git checkout b9f21e709054d18b101ea464e3b2894d834d023d &&\
-                                      mkdir build &&\
-                                      cd build &&\
-                                      ../configure --prefix=$RISCV &&\
-                                      make linux
-
+                                      make && make linux && cd /root && rm -rf riscv-gnu-toolchain
 CMD ["/bin/sh"]
