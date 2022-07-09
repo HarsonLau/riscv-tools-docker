@@ -23,6 +23,6 @@ ENV LD_LIBRARY_PATH="$RISCV/lib:$LD_LIBRARY_PATH"
 RUN git clone --single-branch --depth=1 https://github.com/lshpku/rv8-riscv-ckpt.git&&\
                                     cd rv8-riscv-ckpt&&\
                                     git submodule update --init --recursive&&\
-                                    make -j2 && make install && cd /root && rm -rf rv8-riscv-ckpt/
+                                    make -j2 && make install
 
 CMD ["/bin/sh"]
