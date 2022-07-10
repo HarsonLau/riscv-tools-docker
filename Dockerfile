@@ -22,6 +22,8 @@ RUN git clone --single-branch --depth=1 https://github.com/riscv-software-src/ri
                                       cd /root && rm -rf riscv-pk/
                                       
 ENV LD_LIBRARY_PATH="$RISCV/lib:$LD_LIBRARY_PATH"
+ENV LINUX_PK="/opt/riscv/toolchain/riscv64-unknown-linux-gnu/bin/pk"
+ENV PK="/opt/riscv/toolchain/riscv64-unknown-elf/bin/pk"
 
 RUN git clone --single-branch --depth=1 https://github.com/lshpku/rv8-riscv-ckpt.git&&\
                                     cd rv8-riscv-ckpt&&\
