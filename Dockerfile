@@ -16,7 +16,10 @@ RUN git clone --single-branch --depth=1 https://github.com/riscv-software-src/ri
                                       mkdir build &&\
                                       cd build &&\
                                       ../configure --prefix=$RISCV --host=riscv64-unknown-elf &&\
-                                      make -j2 && make install && cd /root && rm -rf riscv-pk/
+                                      make -j2 && make install && make clean &&\
+                                      ../configure --prefix=$RISCV --host=riscv64-unknown-linux-gnu &&\
+                                      make -j2 && make install && make clean &&\
+                                      cd /root && rm -rf riscv-pk/
                                       
 ENV LD_LIBRARY_PATH="$RISCV/lib:$LD_LIBRARY_PATH"
 
