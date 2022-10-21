@@ -23,6 +23,6 @@ RUN git clone --single-branch  https://github.com/riscv-collab/riscv-gnu-toolcha
                                       git checkout b9f21e709054d18b101ea464e3b2894d834d023d &&\
                                       mkdir build &&\
                                       cd build &&\
-                                      ../configure --prefix=$RISCV &&\
+                                      ../configure --prefix=$RISCV --with-arch=rv64imafd -with-abi=lp64d &&\
                                       make -j2 && make clean && make -j2 linux && cd /root && rm -rf riscv-gnu-toolchain
 CMD ["/bin/sh"]
